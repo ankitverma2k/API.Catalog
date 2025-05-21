@@ -21,14 +21,14 @@ namespace API.Catalog.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
+            return (await _mongoDbRepositories.GetAllAsync());
         }
 
         public Task Insert(T item)
         {
-           return _mongoDbRepositories.CreateAsync(item);
+            return _mongoDbRepositories.CreateAsync(item);
         }
 
         public Task Update(T item)

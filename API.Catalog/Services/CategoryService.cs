@@ -17,7 +17,7 @@ namespace API.Catalog.Services
 
         public Task<IEnumerable<Category>> GetAll()
         {
-            throw new NotImplementedException();
+           return _repository.GetAll();
         }
 
         public Task<Category?> GetById(string id)
