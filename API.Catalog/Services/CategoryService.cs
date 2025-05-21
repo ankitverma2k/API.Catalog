@@ -8,16 +8,16 @@ namespace API.Catalog.Services
         IRepository<Category> _repository;
         public CategoryService(IRepository<Category> repository)
         {
-            _repository=repository;
+            _repository = repository;
         }
         public Task Delete(string id)
         {
-            throw new NotImplementedException();
+            return _repository.Delete(new Guid(id));
         }
 
         public Task<IEnumerable<Category>> GetAll()
         {
-           return _repository.GetAll();
+            return _repository.GetAll();
         }
 
         public Task<Category?> GetById(string id)
@@ -32,7 +32,7 @@ namespace API.Catalog.Services
 
         public Task Update(Category item)
         {
-            throw new NotImplementedException();
+            return _repository.Update(item);
         }
     }
 }

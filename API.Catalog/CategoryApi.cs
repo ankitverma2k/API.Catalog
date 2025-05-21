@@ -1,6 +1,7 @@
 ﻿using API.Catalog.Models;
 using API.Catalog.Repositories;
 using API.Catalog.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Catalog
 {
@@ -11,6 +12,8 @@ namespace API.Catalog
             app.MapPost("Category", Add);
             app.MapGet("/Category", GetAsync);
             app.MapGet("/Category/{id}", GetById);
+            app.MapPut("Category", Update);
+            app.MapDelete("Category/{id}", Delete);
         }
         private static async Task<IResult> Add(Category category, ICategoryService repository)
         {
@@ -49,6 +52,26 @@ namespace API.Catalog
                 return null;
             }
             return result;
+        }
+
+        private static async Task Update(Category item, ICategoryService repository)
+        {
+            await repository.Update(item);
+        }
+
+        private static async Task Delete(string id, ICategoryService repository)
+        {
+            var result = await repository.GetById(id);
+
+            if (result == null)
+            {
+                Results.NotFound(id);
+
+            }
+            else
+            {
+                await repository.Delete(id);
+            }
         }
     }
 

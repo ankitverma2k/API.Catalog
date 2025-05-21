@@ -13,7 +13,7 @@ namespace API.Catalog.Repositories
         }
         public Task Delete(Guid id)
         {
-            throw new NotImplementedException();
+            return _mongoDbRepositories.RemoveAsync(id);
         }
 
         public async Task<T?> GetById(Guid id)
@@ -33,7 +33,7 @@ namespace API.Catalog.Repositories
 
         public Task Update(T item)
         {
-            throw new NotImplementedException();
+            return _mongoDbRepositories.UpdateAsync(item);
         }
     }
 }
