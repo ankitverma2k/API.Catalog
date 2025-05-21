@@ -5,8 +5,8 @@ namespace API.Catalog.Repositories
 {
     public interface IRepository<T> where T : IEntity
     {
-        Task Delete(string id);
-        Task<T?> GetById(string id);
+        Task Delete(Guid id);
+        Task<T?> GetById(Guid id);
         Task<IEnumerable<T>> GetAll();
         Task Insert(T item);
         Task Update(T item);

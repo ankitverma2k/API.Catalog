@@ -11,14 +11,14 @@ namespace API.Catalog.Repositories
         {
             _mongoDbRepositories = mongoDbRepositories;
         }
-        public Task Delete(string id)
+        public Task Delete(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<T?> GetById(string id)
+        public async Task<T?> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return (await _mongoDbRepositories.GetByIdAsync(id));
         }
 
         public async Task<IEnumerable<T>> GetAll()

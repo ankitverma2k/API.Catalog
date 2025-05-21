@@ -22,7 +22,7 @@ namespace API.Catalog.Services
 
         public Task<Category?> GetById(string id)
         {
-            throw new NotImplementedException();
+            return _repository.GetById(new Guid(id));
         }
 
         public Task Insert(Category item)
